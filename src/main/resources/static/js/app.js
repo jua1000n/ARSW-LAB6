@@ -1,5 +1,15 @@
 var Module = (function () {
-    var privateMethod = function () {
-    
+
+    var _privateMethod = function () {
+
     };
+
+    var publicMethod = function () {
+        _privateMethod();
+    };
+
+    return {
+        publicMethod: publicMethod
+    };
+
 })();
