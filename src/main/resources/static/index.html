@@ -21,8 +21,7 @@
           text-align: left;
       }
     </style>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
     <title>Blueprints</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,30 +29,33 @@
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet"
-    href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-
+          href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="js/apimock.js"></script>
     <script src="js/app.js"></script>
 </head>
 <body>
-    <form>
-      <input type="text" id="author" placeholder="Author">
-      <input type="button" class ="consAuthor" value="Get blueprints">
-    </form>
+    <!--cript src="js/apimock.js"></script>
+    <script src="js/app.js"></script-->
+    <div style="float: left;">
+        <input type="text" name="author" placeholder="Author">
+        <button onclick="app.getNameAuthorBlueprint()" >Get blueprints</button>
 
-    <table>
-      <thead>
-      <tr>
-        <th>Author</th>
-        <th>Points</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td></td>
-        <td></td>
-      </tr>
-      </tbody>
-    </table>
+
+
+        <table class="table-blueprint">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>NumebrPoints</th>
+            </tr>
+            </thead>
+            <tbody id="table-tbody">
+            </tbody>
+        </table>
+    </div>
+    <div style="float: right;">
+        <canvas id="myCanvas" align= left l width="500%" height="500%" style="border:1px solid #000000;"></canvas>
+    </div>
+
 </body>
 </html>
