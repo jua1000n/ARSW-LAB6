@@ -15,8 +15,8 @@ apimock=(function(){
 	 {author:"arturo","points":[{"x":140,"y":140},{"x":115,"y":115}],"name":"gear2"}];
 	mockdata["other"]=[{author:"other","points":[{"x":150,"y":120},{"x":215,"y":115},{"x":115,"y":115}],"name":"house"},
 	 {author:"other","points":[{"x":340,"y":240}],"name":"gear"}];
-	mockdata["carlos"]=[{author:"carlos","points":[{"x":115,"y":115}],"name":"house2"},
-		{author:"carlos","points":[{"x":140,"y":140},{"x":115,"y":115}],"name":"gear2"}];
+	mockdata["carlos"]=[{author:"carlos","points":[{"x":115,"y":115},{"x":400,"y":100}],"name":"house2"},
+		{author:"carlos","points":[{"x":0,"y":0},{"x":200,"y":100},{"x":300,"y":100}],"name":"gear2"}];
 
 
 	return {

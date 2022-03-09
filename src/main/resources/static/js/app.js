@@ -2,6 +2,8 @@ app = (function () {
     let aut;
     let name;
     let listAuthor;
+    //const mock = apiclient;
+    const mock = apimock;
 
     const callbackBlue = (listCall) => {
         const list = listCall.map(blueprint => {
@@ -10,20 +12,24 @@ app = (function () {
                points: blueprint.points.length
            }
         });
+
+        var x = document.getElementById("resultt");
+        x.querySelector(".example").innerHTML = (aut + "'s blueprints");
+
         $("#table-tbody").empty();
         listAuthor = list;
         console.log(list);
 
-
-
-
         list.map(blueprint => {
+
             const {name, points} = blueprint;
             const col = document.createElement('tr');
+            //getNameAuthorNameBlueprint(name);
 
             col.innerHTML = `
-                <td>${name}</td>
-                <td>${points}</td>
+                <td style="padding: 10px; text-align: left; border: 1px solid #cdcdcd;">${name}</td>
+                <td style="padding: 10px; text-align: left; border: 1px solid #cdcdcd;">${points}</td>
+                <td style="padding: 10px; text-align: left; border: 1px solid #cdcdcd;"><button onclick="app.getNameAuthorNameBlueprint('${name}')" >Open</button></td>
                 `
             $("#table-tbody").append(col);
         });
@@ -34,14 +40,32 @@ app = (function () {
         if(aut === "") {
             alert("No ingreso ningun author")
         }else {
-            apimock.getBlueprintsByAuthor(aut, callbackBlue);
+            mock.getBlueprintsByAuthor(aut, callbackBlue);
         }
     }
 
-    const getNameAuthorNameBlueprint =  () => {
-        aut = document.getElementsByName("author")[0].value;
-        apimock.getBlueprintsByNameAndAuthor(aut, name, (dibujo) => {
-            
+    const getNameAuthorNameBlueprint = (authorName) => {
+        mock.getBlueprintsByNameAndAuthor(aut, authorName, (poin) => {
+        let point = poin.points;
+
+            var x = document.getElementById("canvast");
+            x.querySelector(".excanvas").innerHTML = ("Current blueprint: " +authorName);
+        if(point.length>0) {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+
+            ctx.clearRect(0, 0, c.width, c.height);
+            c.width = c.width;
+
+            ctx.moveTo(point[0].x,point[0].y);
+            for(var i =1; i< point.length; i++) {
+                ctx.lineTo(point[i].x,point[i].y);
+            }
+            console.log(point[0].x,point[0].y);
+
+            ctx.stroke();
+        }
+
         });
     }
 
@@ -51,7 +75,6 @@ app = (function () {
 
     return{
         getNameAuthorBlueprint: getNameAuthorBlueprint,
-        setNameAuthor: setNameAuthor(),
         getNameAuthorNameBlueprint: getNameAuthorNameBlueprint
     }
 

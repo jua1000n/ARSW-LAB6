@@ -8,18 +8,6 @@
       form input, button{
           padding: 5px;
       }
-      table{
-          width: 100%;
-          margin-bottom: 20px;
-          border-collapse: collapse;
-      }
-      table, th, td{
-          border: 1px solid #cdcdcd;
-      }
-      table th, table td{
-          padding: 10px;
-          text-align: left;
-      }
     </style>
 
     <title>Blueprints</title>
@@ -36,26 +24,32 @@
 <body>
     <!--cript src="js/apimock.js"></script>
     <script src="js/app.js"></script-->
-    <div style="float: left;">
-        <input type="text" name="author" placeholder="Author">
-        <button onclick="app.getNameAuthorBlueprint()" >Get blueprints</button>
+    <h1>Blueprints</h1>
+    <input type="text" name="author" placeholder="Author">
+    <button onclick="app.getNameAuthorBlueprint()" >Get blueprints</button>
 
-
-
-        <table class="table-blueprint">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>NumebrPoints</th>
-            </tr>
-            </thead>
-            <tbody id="table-tbody">
-            </tbody>
-        </table>
-    </div>
-    <div style="float: right;">
-        <canvas id="myCanvas" align= left l width="500%" height="500%" style="border:1px solid #000000;"></canvas>
-    </div>
-
+    <table width="100%" >
+        <td valign="top">
+            <div id="resultt">
+                <h2 class="example" ></h2>
+            </div>
+            <table class="table-blueprint" style="border: 1px solid #cdcdcd; width: 150%; margin-bottom: 20px; border-collapse: collapse;">
+                <thead>
+                <tr>
+                    <th style="padding: 10px; text-align: left; border: 1px solid #cdcdcd;">Name</th>
+                    <th style="padding: 10px; text-align: left; border: 1px solid #cdcdcd;">NumebrPoints</th>
+                </tr>
+                </thead>
+                <tbody id="table-tbody">
+                </tbody>
+            </table>
+        </td>
+        <td align="center">
+            <div id="canvast">
+                <h2 class="excanvas" ></h2>
+            </div>
+            <canvas id="myCanvas" align= left l width="500%" height="500%" style="border:1px solid #000000;"></canvas>
+        </td></tr>
+    </table>
 </body>
 </html>
