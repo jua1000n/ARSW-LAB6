@@ -1,20 +1,19 @@
+
 apiclient=(function(){
     return{
-        getBlueprintsByAuthor:function(author,callback){
-            const date = $.get({
-                url: "/blueprints/"+ author, contentType: "application/json"});
+        getBlueprintsByAuthor: (author,callback)=>{
+            const date = $.get({url: "/blueprints/"+ author, contentType: "application/json"});
             date.then(function (json) {
-                    console.log(json);
-                    callback(null, json);
-                });
+                let temp = JSON.parse(json);
+                return callback(temp);
+            });
         },
 
-        getBlueprintsByNameAndAuthor:function(author,name,callback){
-            const date = $.get({
-                url: "/blueprints/"+ author + "/" + name, contentType: "application/json"});
+        getBlueprintsByNameAndAuthor:(author,name,callback)=>{
+            const date = $.get({url: "/blueprints/"+ author + "/" + name, contentType: "application/json"});
             date.then(function (json) {
-                console.log(json);
-                callback(null, json);
+                let temp = JSON.parse(json);
+                callback(temp);
             });
         }
     }

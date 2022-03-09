@@ -2,13 +2,14 @@ app = (function () {
     let aut;
     let name;
     let listAuthor;
-    //const mock = apiclient;
-    const mock = apimock;
+    const mock = apiclient;
+    //const mock = apimock;
 
     const callbackBlue = (listCall) => {
         const list = listCall.map(blueprint => {
            return {
                name: blueprint.name,
+
                points: blueprint.points.length
            }
         });
@@ -18,7 +19,6 @@ app = (function () {
 
         $("#table-tbody").empty();
         listAuthor = list;
-        console.log(list);
 
         list.map(blueprint => {
 
@@ -46,26 +46,30 @@ app = (function () {
 
     const getNameAuthorNameBlueprint = (authorName) => {
         mock.getBlueprintsByNameAndAuthor(aut, authorName, (poin) => {
-        let point = poin.points;
+            let point;
+            if(poin.points === undefined) {
+                point = poin;
+
+            } else {
+                point = poin.points;
+            }
 
             var x = document.getElementById("canvast");
             x.querySelector(".excanvas").innerHTML = ("Current blueprint: " +authorName);
-        if(point.length>0) {
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
+            if(point.length>0) {
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
 
-            ctx.clearRect(0, 0, c.width, c.height);
-            c.width = c.width;
+                ctx.clearRect(0, 0, c.width, c.height);
+                c.width = c.width;
 
-            ctx.moveTo(point[0].x,point[0].y);
-            for(var i =1; i< point.length; i++) {
-                ctx.lineTo(point[i].x,point[i].y);
+                ctx.moveTo(point[0].x,point[0].y);
+                for(var i =1; i< point.length; i++) {
+                    ctx.lineTo(point[i].x,point[i].y);
+                }
+
+                ctx.stroke();
             }
-            console.log(point[0].x,point[0].y);
-
-            ctx.stroke();
-        }
-
         });
     }
 

@@ -39,6 +39,7 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
         Blueprint bp2 = new Blueprint("bad", "blueprin02", pts2);
         Blueprint bp3 = new Blueprint("other", "otroPlano", pt3);
         Blueprint bp4 = new Blueprint("juan", "bluepri02",pts4);
+        Blueprint bp7 = new Blueprint("juan", "bluepri03",pts5);
         Blueprint bp5 = new Blueprint("laura", "bluepri03", pts5);
         Blueprint bp6 = new Blueprint("arturo", "otroPlano01", pts);
         blueprints.put(new Tuple<>(bp1.getAuthor(),bp1.getName()), bp1);
@@ -47,6 +48,7 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
         blueprints.put(new Tuple<>(bp4.getAuthor(),bp4.getName()), bp4);
         blueprints.put(new Tuple<>(bp5.getAuthor(),bp5.getName()), bp5);
         blueprints.put(new Tuple<>(bp6.getAuthor(),bp6.getName()), bp6);
+        blueprints.put(new Tuple<>(bp7.getAuthor(),bp7.getName()), bp7);
 
         
     }    
@@ -90,6 +92,4 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
     public void deleteBlueprint(String author, String bprintname) throws BlueprintNotFoundException {
         blueprints.remove(new Tuple<>(author, bprintname));
     }
-
-
 }
